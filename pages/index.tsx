@@ -18,11 +18,8 @@ export default function Home(props: any) {
 
   const [contact, setContact] = useState(props.contacts);
 
-    const { data: session } = useSession()
-    if (session) {
         return (
             <>
-                <button onClick={() => signOut()}>Sign out</button>
                 <div>
                     {contact && contact.map((contact: any) => (
                         <div key={contact.id}>
@@ -32,12 +29,8 @@ export default function Home(props: any) {
                     ))}
                 </div>
             </>
-        )  }
-    return(
-        <>      Not signed in <br />
-            <button onClick={() => signIn()}>Sign in</button>
-        </>
-    )
+        )
+
 
 }
 

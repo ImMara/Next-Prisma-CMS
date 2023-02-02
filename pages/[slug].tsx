@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useRouter} from "next/router";
 import {PrismaClient} from "@prisma/client";
-import {router} from "next/client";
-import {redirect} from "next/navigation";
 
 export async function getServerSideProps(context: any) {
     const slug = context.params.slug;
@@ -13,7 +10,6 @@ export async function getServerSideProps(context: any) {
             slug: slug
         }
     });
-    console.log(page)
     if(!page) {
         return{
             redirect: {
@@ -29,7 +25,6 @@ export async function getServerSideProps(context: any) {
             settings: JSON.parse(JSON.stringify(settings))
         }
     }
-
 }
 
 Slug.propTypes = {
