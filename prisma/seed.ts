@@ -41,8 +41,33 @@ async function main() {
         id: 100,
     } });
 
-    addAdmin()
+    await addAdmin()
     // @ts-ignore
+
+    const addPage = async () => await prisma.page.create( { data: {
+        title: "Example page",
+        slug: "example-page",
+        content: "Welcome to my website",
+        createdAt: faker.date.past(),
+        updatedAt: faker.date.recent(),
+        template: 'example',
+        published: true,
+        authorId: 100,
+    } });
+
+    await addPage()
+
+    const addSettings = async () => await prisma.settings.create( { data: {
+        title: "Example website",
+        description: "Welcome to my website",
+        createdAt: faker.date.past(),
+        updatedAt: faker.date.recent(),
+        logo: faker.image.avatar(),
+        favicon: faker.image.avatar(),
+        theme: "Basic"
+    } });
+    await addSettings()
+
 
 }
 
